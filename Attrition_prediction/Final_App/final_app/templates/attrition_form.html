@@ -1,0 +1,143 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attrition Form </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .input-group-text {
+            width: 150px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <h1 align="center" style="border:2px solid black; padding:5px; border-radius:5px;">Employee Details Form</h1>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="name">Name</label>
+                <input id="name" name="Person Name" type="text" class="form-control" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="location">Currently Living At</label>
+                <select id="location" name="location" class="form-control" required>
+                    <option value="" disabled selected>Select your location</option>
+                    <option value="7">Chennai</option>
+                    <option value="6">Noida</option>
+                    <option value="5">Bangalore</option>
+                    <option value="4">Hyderabad</option>
+                    <option value="3">Pune</option>
+                    <option value="2">Madurai</option>
+                    <option value="1">Other Place</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="emp-group">Current Employee Group</label>
+                <select id="emp-group" name="emp-group" class="form-control" required>
+                    <option value="" disabled selected>Select your group</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="B3">B3</option>
+                    <option value="other group">Other Group</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="function">Current Working Function</label>
+                <select id="function" name="function" class="form-control" required>
+                    <option value="" disabled selected>Select your function</option>
+                    <option value="Support">Support</option>
+                    <option value="Operation">Operation</option>
+                    <option value="Sales">Sales</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" class="form-control" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="tenure-group">Tenure Group</label>
+                <select id="tenure-group" name="tenure group" class="form-control" required>
+                    <option value="" disabled selected>Select your tenure group</option>
+                    <option value="< =1">< =1 (in years)</option>
+                    <option value="> 1 & < =3">> 1 & < =3 (in years)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="experience">Experience in Industry</label>
+                <input id="experience" name="experience" type="text" class="form-control" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="age">Age</label>
+                <input id="age" name="age" type="text" class="form-control" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="marital">Marital Status</label>
+                <select id="marital" name="Marital" class="form-control" required>
+                    <option value="" disabled selected>Select your status</option>
+                    <option value="Marr.">Marr.</option>
+                    <option value="Single">Single</option>
+                    <option value="Other status">Other status</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="hiring">Source of Hiring</label>
+                <select id="hiring" name="Hiring" class="form-control" required>
+                    <option value="" disabled selected>Select your source</option>
+                    <option value="Agency">Agency</option>
+                    <option value="Direct">Direct</option>
+                    <option value="Employee Referral">Employee Referral</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="promoted">Have been promoted before</label>
+                <select id="promoted" name="Promoted" class="form-control" required>
+                    <option value="1">Promoted</option>
+                    <option value="0">Not Promoted</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="job">Does the Job Role match to the employee</label>
+                <select id="job" name="Job" class="form-control" required>
+                    <option value="1">Job Role matches</option>
+                    <option value="0">Job Role does not match</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row justify-content-center">
+            <div class="form-group">
+                <button type="submit" name="attrition_button" value="Save&Next" class="btn btn-primary">Predict</button>
+            </div>
+        </div>
+    </form>
+
+    {% if result %}
+    <h2 class="mt-4">The Attrition value is: {{ result }}!</h2>
+    {% endif %}
+</div>
+
+</body>
+</html>
